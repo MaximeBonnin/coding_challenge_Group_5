@@ -1,7 +1,6 @@
 package com.db.grad.javaapi.controller;
 
 
-import com.db.grad.javaapi.model.Dog;
 import com.db.grad.javaapi.model.Trade;
 import com.db.grad.javaapi.service.TradeHandler;
 import org.springframework.beans.factory.annotation.Autowired;
