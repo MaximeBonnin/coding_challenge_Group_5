@@ -1,6 +1,6 @@
 
-DROP TABLE IF EXISTS "user";
-CREATE TABLE "user" (
+DROP TABLE IF EXISTS users;
+CREATE TABLE users (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(250) UNIQUE NOT NULL,
     user_password VARCHAR(32) NOT NULL,
@@ -32,7 +32,7 @@ DROP TABLE IF EXISTS book_user;
 CREATE TABLE book_user (
     email VARCHAR(250) NOT NULL,
     book_id INT NOT NULL,
-    FOREIGN key (email) REFERENCES "user" (email),
+    FOREIGN key (email) REFERENCES users (email),
     FOREIGN key (book_id) REFERENCES book (id)
 );
 

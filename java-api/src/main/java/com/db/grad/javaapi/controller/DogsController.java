@@ -1,11 +1,13 @@
 package com.db.grad.javaapi.controller;
 
 import com.db.grad.javaapi.exception.ResourceNotFoundException;
-import com.db.grad.javaapi.model.Dog;
+import com.db.grad.javaapi.model.Dog;   // TODO: remove this
 import com.db.grad.javaapi.service.DogHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import com.db.grad.javaapi.model.User;
 
 import javax.validation.Valid;
 import java.util.HashMap;
@@ -29,11 +31,11 @@ public class DogsController {
         return dogsService.getAllDogs();
     }
 
-    @GetMapping("/dogs/{id}")
-    public ResponseEntity < Dog > getEmployeeById(@PathVariable(value = "id") Long id)
+    @GetMapping("/user/{id}")
+    public ResponseEntity < User > getUserById(@PathVariable(value = "id") Long id)
     throws ResourceNotFoundException {
-        Dog dogs = dogsService.getDogById(id);
-        return ResponseEntity.ok().body(dogs);
+        User thisUser = dogsService.getUserById(id);
+        return ResponseEntity.ok().body(thisUser);
     }
 
     @PostMapping("/dogs")

@@ -5,6 +5,9 @@ import com.db.grad.javaapi.repository.DogsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.db.grad.javaapi.repository.UserRepository;
+import com.db.grad.javaapi.model.User;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -12,12 +15,14 @@ import java.util.Optional;
 public class DogHandler implements IDogsService
 {
     private DogsRepository itsDogsRepo;
+    private UserRepository itsUserRepo;
 
     @Autowired
-    public DogHandler( DogsRepository dogRepo )
+    public DogHandler( UserRepository userRepo )
     {
-        itsDogsRepo = dogRepo;
+        itsUserRepo = userRepo;
     }
+    
 
     @Override
     public List<Dog> getAllDogs()
@@ -56,6 +61,12 @@ public class DogHandler implements IDogsService
     public Dog getDogById(long uniqueId)
     {
         return itsDogsRepo.findById(uniqueId).get();
+    }
+
+    @Override
+    public User getUserById(long uniqueId)
+    {
+        return itsUserRepo.findById(uniqueId).get();
     }
 
     @Override
