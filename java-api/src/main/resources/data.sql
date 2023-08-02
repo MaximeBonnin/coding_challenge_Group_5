@@ -1,3 +1,4 @@
-INSERT INTO dogs (dog_id, name, age) VALUES (1, 'Einstein', 3);
-INSERT INTO dogs (dog_id, name, age) VALUES (2, 'Kaya', 5);
-INSERT INTO dogs (dog_id, name, age) VALUES (3, 'Lassie', 7);
+
+INSERT INTO "user" (email, user_password, user_role) VALUES ('test@email.com', 'myPassword', 'user');
+INSERT INTO "user" (email, user_password, user_role) VALUES ('test2@email.com', 'myOtherPassword', 'user');
+INSERT INTO "user" (email, user_password, user_role) VALUES ('test3@email.com', 'myThirdPassword', 'user');
