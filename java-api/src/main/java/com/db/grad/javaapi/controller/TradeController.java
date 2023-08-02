@@ -18,7 +18,7 @@ import java.util.List;
 public class TradeController {
     @Autowired
     TradeHandler tradeService;
-    @GetMapping("/dogs")
+    @GetMapping("/trades")
     public List<Trade> getAllTrades() {
         return tradeService.getAllTrades();
     }
