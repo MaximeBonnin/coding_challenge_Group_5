@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import './Login.css';
 import { useState } from "react";
 import { saveLogin as loginUser } from '../../services/loginService'
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import Card from "react-bootstrap/Card";
 
 export default function Login({ setToken }) {
     const [username, setUserName] = useState();
@@ -19,20 +22,23 @@ export default function Login({ setToken }) {
 
     return(
     <div className="login-wrapper">
-    <h1>Please Log In</h1>      
-        <form onSubmit={handleSubmit}>
-            <label>
-                <p>Username</p>
-                <input type="text" onChange={e => setUserName(e.target.value)}/>
-            </label>
-            <label>
-                <p>Password</p>
-                <input type="password" onChange={e => setPassword(e.target.value)}/>
-            </label>
-            <div>
-                <button type="submit">Submit</button>
-            </div>      
-        </form>   
+    <Card style={{ width: '28rem' }}>   
+    <Card.Body>
+    <Card.Title>Login</Card.Title> 
+    <Form onSubmit={handleSubmit}>
+        <Form.Group className="mb-3">
+            <Form.Label>Username</Form.Label>
+            <Form.Control type="text" onChange={e => setUserName(e.target.value)}/>
+        </Form.Group>
+        
+        <Form.Group className="mb-3">
+            <Form.Label>Password</Form.Label>
+            <Form.Control type="password" onChange={e => setPassword(e.target.value)}/>
+        </Form.Group>
+        <Button variant="primary " type="submit">Submit</Button>   
+    </Form>   
+    </Card.Body>     
+    </Card>
     </div>  
     )
 }
