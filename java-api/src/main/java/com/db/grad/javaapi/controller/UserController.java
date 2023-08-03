@@ -31,12 +31,8 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<User> loginUser(@RequestBody LoginRequest loginRequest) {
-
-        String email = loginRequest.getEmail();
-        String password = loginRequest.getPassword();
-
-
-        User loggedInUser = userService.loginUser(email, password);
+        
+        User loggedInUser = userService.loginUser(loginRequest.getEmail(), loginRequest.getPassword());
         if (loggedInUser == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
