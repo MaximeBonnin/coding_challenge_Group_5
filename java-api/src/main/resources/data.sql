@@ -30,3 +30,14 @@ VALUES
     (1, 'US0987654321', 2, 'USD', 'CANCELLED', 50, 1500.00, 'SELL', '2023-01-02', '2023-01-04'),
     (2, 'US1234567890', 1, 'EUR', 'EXECUTED', 200, 900.00, 'BUY', '2023-01-03', '2023-01-05'),
     (2, 'US0987654321', 2, 'EUR', 'PENDING', 300, 800.00, 'SELL', '2023-01-04', '2023-01-06');
+
+-- Create all data
+
+
+
+
+INSERT INTO all_data (trade_type, trade_currency, quantity, trade_settlement_date, trade_status, trade_date, unit_price, coupon_percent, bond_currency, cusip, `face_value (mn)`, isin, issuer_name, bond_maturity_date, status, type, book_name, bond_holder)
+SELECT *
+FROM CSVREAD('classpath:db-bonds-data.csv');
+
+SELECT * FROM all_data;

@@ -59,3 +59,26 @@ CREATE TABLE trades (
     FOREIGN key (isin) REFERENCES bond (isin),
     FOREIGN key (issuer_id) REFERENCES issuer (id)
 );
+
+
+DROP TABLE IF EXISTS all_data;
+CREATE TABLE all_data(
+ trade_type VARCHAR(255),
+ trade_currency VARCHAR(3),
+ quantity INT,
+ trade_settlement_date VARCHAR(255),
+ trade_status VARCHAR(255),
+ trade_date VARCHAR(255),
+ unit_price DECIMAL(10,2),
+ coupon_percent DECIMAL(5,2),
+ bond_currency VARCHAR(3),
+ cusip VARCHAR(32),
+ `face_value (mn)` DECIMAL(10,2),
+ isin VARCHAR(12),
+ issuer_name VARCHAR(255),
+ bond_maturity_date VARCHAR(255),
+ status VARCHAR(255),
+ type VARCHAR(255),
+ book_name VARCHAR(255),
+ bond_holder VARCHAR(255)
+);
