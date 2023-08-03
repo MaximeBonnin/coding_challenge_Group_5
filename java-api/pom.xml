@@ -26,6 +26,8 @@
 			<artifactId>h2</artifactId>
 		</dependency>
 
+		
+
 		<!-- MYSQL database -->
 		<dependency>
 			<groupId>mysql</groupId>

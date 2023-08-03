@@ -49,12 +49,15 @@ public class WebSecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeRequests(auth -> auth
                         .antMatchers("/api/v1/auth/login").permitAll()
+                        .antMatchers("/h2-console/**").permitAll()
                         .antMatchers("/api/v1/**").authenticated()
-
                 )
                 .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .httpBasic(withDefaults())
+                .headers(headers -> headers
+                        .frameOptions(frameOptions -> frameOptions.sameOrigin()) // Add this line
+                )
                 .build();
 
     }
