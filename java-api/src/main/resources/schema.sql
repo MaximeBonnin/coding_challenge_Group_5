@@ -7,17 +7,24 @@ CREATE TABLE users (
     user_role VARCHAR(250) NOT NULL
 );
 
+DROP TABLE IF EXISTS issuer;
+CREATE TABLE issuer (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    issuer_name VARCHAR(250) NOT NULL
+);
+
 DROP TABLE IF EXISTS bond;
 CREATE TABLE bond (
     isin VARCHAR(12) NOT NULL PRIMARY KEY,
     cusip VARCHAR(32),
-    issuer_name VARCHAR(250) NOT NULL,
+    issuer_id INT NOT NULL,
     maturity_date DATE NOT NULL,
     coupon DECIMAL(65, 2) NOT NULL,
     bond_type VARCHAR(250) NOT NULL,
     face_value INT NOT NULL,
     currency VARCHAR(32) NOT NULL,
-    bond_status VARCHAR(250) NOT NULL
+    bond_status VARCHAR(250) NOT NULL,
+    FOREIGN key (issuer_id) REFERENCES issuer (id)
 );
 
 
@@ -36,11 +43,6 @@ CREATE TABLE book_user (
     FOREIGN key (book_id) REFERENCES book (id)
 );
 
-DROP TABLE IF EXISTS issuer;
-CREATE TABLE issuer (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    issuer_name VARCHAR(250) NOT NULL
-);
 
 DROP TABLE IF EXISTS trades;
 CREATE TABLE trades (
