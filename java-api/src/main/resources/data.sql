@@ -17,6 +17,16 @@ SELECT DISTINCT book_name
 FROM ALL_DATA;
 
 
+-- Insert data into the users table
+INSERT INTO book_user (email, book_id)
+VALUES
+    ('test@email.com', 1),
+    ('test@email.com', 2),
+    ('test@email.com', 3),
+    ('test2@email.com', 4),
+    ('test3@email.com', 5),
+    ('test3@email.com', 5);
+
 
 -- Insert data into the issuer table
 INSERT INTO issuer (issuer_name)
