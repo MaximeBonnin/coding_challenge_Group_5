@@ -7,4 +7,6 @@ import java.util.List;
 public interface TradeService {
     public List<Trade> getAllTrades();
 
+    public List<Trade> getTradesByBookId(long bookId);
+
 }
