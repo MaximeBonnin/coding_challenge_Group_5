@@ -17,4 +17,10 @@ public class TradeHandler implements TradeService{
         System.out.println(trades);
         return trades;
     }
+
+    @Override    
+    public List<Trade> getTradesByBookId(long bookId)
+    {
+        return tradeRepository.findByBookId(bookId);
+    }
 }
