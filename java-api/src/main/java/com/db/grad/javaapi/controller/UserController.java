@@ -1,6 +1,7 @@
 package com.db.grad.javaapi.controller;
 
 import com.db.grad.javaapi.exception.ResourceNotFoundException;
+import com.db.grad.javaapi.model.LoginRequest;
 import com.db.grad.javaapi.service.UserHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,13 +30,17 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<User> loginUser(@RequestParam("email") String email,
-                                          @RequestParam("password") String password) {
-        System.out.println(email);
+    public ResponseEntity<User> loginUser(@RequestBody LoginRequest loginRequest) {
+
+        String email = loginRequest.getEmail();
+        String password = loginRequest.getPassword();
+
+
         User loggedInUser = userService.loginUser(email, password);
         if (loggedInUser == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
+
         return ResponseEntity.ok().body(loggedInUser);
     }
 
