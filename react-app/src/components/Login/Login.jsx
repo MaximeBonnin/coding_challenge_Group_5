@@ -19,12 +19,12 @@ export default function Login({ setToken }) {
         });
         setToken(token)
     };
-
+    
     return(
     <div className="login-wrapper">
     <Card style={{ width: '28rem' }}>   
     <Card.Body>
-    <Card.Title>Login</Card.Title> 
+    <Card.Title >Login</Card.Title> 
     <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3">
             <Form.Label>Username</Form.Label>
@@ -41,7 +41,7 @@ export default function Login({ setToken }) {
     </Card>
     </div>  
     )
-}
+};
 
 Login.propTypes = {
     setToken: PropTypes.func.isRequired
