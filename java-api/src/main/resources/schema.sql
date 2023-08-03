@@ -10,7 +10,7 @@ CREATE TABLE users (
 DROP TABLE IF EXISTS bond;
 CREATE TABLE bond (
     isin VARCHAR(12) NOT NULL PRIMARY KEY,
-    cusip VARCHAR(9),
+    cusip VARCHAR(32),
     issuer_name VARCHAR(250) NOT NULL,
     maturity_date DATE NOT NULL,
     coupon DECIMAL(65, 2) NOT NULL,
@@ -38,7 +38,7 @@ CREATE TABLE book_user (
 
 DROP TABLE IF EXISTS issuer;
 CREATE TABLE issuer (
-    id INT NOT NULL PRIMARY KEY,
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     issuer_name VARCHAR(250) NOT NULL
 );
 
