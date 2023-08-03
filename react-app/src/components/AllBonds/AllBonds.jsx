@@ -29,7 +29,7 @@ export const AllBonds = () => {
     const bondKeys = [
         "isin",
         "cusip",
-        "issuerId",
+        "issuer_name",
         "maturityDate",
         "coupon",
         "bondType",
