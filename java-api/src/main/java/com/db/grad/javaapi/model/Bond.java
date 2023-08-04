@@ -14,7 +14,7 @@ public class Bond {
     private String isin;
 
     private String cusip;
-    private int issuerId;
+    private String issuerName;
     private Date maturityDate;
     private double coupon;
     private String bondType;
@@ -23,11 +23,11 @@ public class Bond {
     private String bondStatus;
 
     public Bond(){ }
-    public Bond(String isin, String cusip, int issuerId, Date maturityDate, double coupon,
+    public Bond(String isin, String cusip, String issuerName, Date maturityDate, double coupon,
                 String bondType, int faceValue, String currency, String bondStatus) {
         this.isin = isin;
         this.cusip = cusip;
-        this.issuerId = issuerId;
+        this.issuerName = issuerName;
         this.maturityDate = maturityDate;
         this.coupon = coupon;
         this.bondType = bondType;
@@ -54,13 +54,13 @@ public class Bond {
         this.cusip = cusip;
     }
 
-    @Column(name="issuer_id", nullable = false)
-    public int getIssuerId() {
-        return issuerId;
+    @Column(name="issuer_name", nullable = false)
+    public String getIssuerName() {
+        return issuerName;
     }
 
-    public void setIssuerId(int issuerId) {
-        this.issuerId = issuerId;
+    public void setIssuerName(String issuerName) {
+        this.issuerName = issuerName;
     }
 
     @Column(name="maturity_date", nullable = false)
