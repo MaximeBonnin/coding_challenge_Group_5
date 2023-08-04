@@ -19,7 +19,7 @@ import java.util.List;
 public class BondInBookController {
     @Autowired
     BondInBookHandler bondInBookService;
-    @GetMapping("/bonds/{book_id}")
+    @GetMapping("/bonds/by_book_id/{book_id}")
     public List<BondInBook> getBondByBookId(@PathVariable(value = "book_id") Long bookId)
     throws ResourceNotFoundException {
         return bondInBookService.getBondsInBook(bookId);
