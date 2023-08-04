@@ -4,12 +4,10 @@ package com.db.grad.javaapi.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
-@Table(name = "bond")
-public class Bond {
+public class BondInBook {
     @Id
     private String isin;
 
@@ -21,10 +19,11 @@ public class Bond {
     private int faceValue;
     private String currency;
     private String bondStatus;
+    private long bookId;
 
-    public Bond(){ }
-    public Bond(String isin, String cusip, String issuerName, Date maturityDate, double coupon,
-                String bondType, int faceValue, String currency, String bondStatus) {
+    public BondInBook(){ }
+    public BondInBook(String isin, String cusip, String issuerName, Date maturityDate, double coupon,
+                String bondType, int faceValue, String currency, String bondStatus, long bookId) {
         this.isin = isin;
         this.cusip = cusip;
         this.issuerName = issuerName;
@@ -34,6 +33,7 @@ public class Bond {
         this.faceValue = faceValue;
         this.currency = currency;
         this.bondStatus = bondStatus;
+        this.bookId = bookId;
     }
     @Id
     @Column(name="isin", nullable = false)
@@ -115,5 +115,14 @@ public class Bond {
 
     public void setBondStatus(String bondStatus) {
         this.bondStatus = bondStatus;
+    }
+
+    @Column(name="book_id", nullable = false)
+    public long getBookId() {
+        return bookId;
+    }
+
+    public void setbookId(long bookId) {
+        this.bookId = bookId;
     }
 }
