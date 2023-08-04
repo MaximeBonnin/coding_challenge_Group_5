@@ -11,7 +11,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BondRepository extends JpaRepository<Bond, Integer> {
 
-    // This needs to add 
+    // get all bonds
     @Query(nativeQuery = true, value = "SELECT bond.isin, bond.cusip, issuer.issuer_name, bond.maturity_date, bond.coupon, bond.bond_type, bond.face_value, bond.currency, bond.bond_status FROM bond INNER JOIN issuer ON issuer.id = bond.issuer_id;")
     List<Bond> findAll();
+
 }
