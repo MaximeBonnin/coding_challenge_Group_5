@@ -5,6 +5,6 @@ import com.db.grad.javaapi.model.BondInBook;
 import java.util.List;
 
 public interface BondInBookService {
-    public List<BondInBook> getBondsInBook(long bookId);
-
+    List<BondInBook> getBondsInBook(long bookId);
+    List<BondInBook> getBondsInBookByMaturityDate(long bookId, String date);  // Added this line
 }
