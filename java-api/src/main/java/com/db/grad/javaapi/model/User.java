@@ -15,6 +15,17 @@ public class User
     private String userPassword;
     private String userRole;
 
+    public User(long id, String email, String userPassword, String userRole) {
+        this.id = id;
+        this.email = email;
+        this.userPassword = userPassword;
+        this.userRole = userRole;
+    }
+
+    public User() {
+
+    }
+
     @Id
     @Column(name = "id", nullable = false)
     public long getId() {
