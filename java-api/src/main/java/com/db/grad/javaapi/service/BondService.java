@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface BondService {
     public List<Bond> getAllBonds();
+    public List<Bond> findAllBondsAroundDate(String date);
 
 }

@@ -17,4 +17,11 @@ public class BondHandler implements BondService{
         System.out.println(bonds);
         return bonds;
     }
+
+    @Override
+    public List<Bond> findAllBondsAroundDate(String date) {
+        List<Bond> bonds = bondRepository.findAllBondsAroundDate(date);
+        System.out.println(bonds);
+        return bonds;
+    }
 }
