@@ -4,30 +4,39 @@ import { Table } from 'react-bootstrap';
 
 export const AllBonds = () => {
 
-    // const [allBonds, setAllBonds] = useState([])
+    const [allBonds, setAllBonds] = useState([])
 
-    // useEffect(() => {         
-    //     getAllBonds()               
-    //     .then(({data}) => {               
-    //         setAllBonds(data);               
-    //     });       
-    //     }, []);
-    // const getAllBondsFromAPI = ()=>{}
+    useEffect(() => {         
+        getAllBonds()               
+        .then(({data}) => {               
+            setAllBonds(data);               
+        });       
+        }, []);
+    const getAllBondsFromAPI = ()=>{}
     
     const tabelHead = [
         "ISIN",
         "cusip",
         "Issuer ID",
         "Maturity Date",
+        "Coupon",
         "Bondtype",
         "Face value",
         "Currency",
         "Bond Status"
     ]
 
-    tabelHead.map((item) => {
-        console.log(item);
-    });
+    const bondKeys = [
+        "isin",
+        "cusip",
+        "issuer_name",
+        "maturityDate",
+        "coupon",
+        "bondType",
+        "faceValue",
+        "currency",
+        "bondStatus"
+        ]
 
     return (
         <>
@@ -44,17 +53,35 @@ export const AllBonds = () => {
                 </tr>
             </thead>
             <tbody>
-                {/* {allBonds.map((item, index) => {
+                {allBonds.map((item, index) => {
+                    return (
                     <tr key={index}>
-                        <td>{item.isin}</td>
-                        ...
+                        {
+                        bondKeys.map((keyValue) => {
+                            if (keyValue == "maturityDate") {
+                                let tempDate = new Date(item[keyValue])
+                                let yyyy = tempDate.getFullYear();
+                                let mm = tempDate.getMonth() + 1;
+                                let dd = tempDate.getDate();
+                                
+                                if (dd < 10) dd = '0' + dd;
+                                if (mm < 10) mm = '0' + mm;
+
+                                tempDate = dd + '/' + mm + '/' + yyyy;
+                                
+                                return (<td>{tempDate}</td>)
+                            } else {
+                                return (<td>{item[keyValue]}</td>)
+                            }
+                        })
+                        }
                     </tr>
+                    )
                 }
                 )
-                } */}
+                }
             </tbody>
         </Table>
-        
         </>
     )
 }
