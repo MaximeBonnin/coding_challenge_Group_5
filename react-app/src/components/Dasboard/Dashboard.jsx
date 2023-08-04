@@ -2,13 +2,17 @@ import React from 'react';
 import { AllBonds } from '../AllBonds/AllBonds';
 import Card from "react-bootstrap/Card";
 import Filter from './Filter';
+import logoImage from '../../db_logo.png';
 
 
 const Dasboard = () => {
   return(
     <>
     <header>
-      <img id='logo-image' src="https://th.bing.com/th/id/OIP.DsY0EH8WGf2CtXcvTARfQgHaEK?pid=ImgDet&rs=1"  alt=""/>
+      <ul>
+        <li><img id='logo-image' src={logoImage}  alt="Logo Image"/></li>
+        <li>Your Email: <b> test@email.com</b></li>
+      </ul>
     </header>
     <div className="content-container">
     <Filter />

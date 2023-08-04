@@ -10,11 +10,11 @@ import Login from "./components/Login/Login";
 
 const App = () => {
   // uncomment when the token authentification is workling
-  // const [token, setToken] = useState();
+  const [token, setToken] = useState();
 
-  //   if(!token) {
-  //     return <Login setToken={setToken} />
-  // }
+  if(!token) {
+    //return <Login setToken={setToken} />
+  }
 
   return (
     <BrowserRouter>
