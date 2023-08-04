@@ -7,17 +7,23 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Card from "react-bootstrap/Card";
 
-export default function Login({ setToken }) {
-    const [username, setUserName] = useState();
+  
+export default function Login() {
+    const [email, setUserName] = useState();
     const [password, setPassword] = useState();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const token = await loginUser({
-            username,
-            password
-        });
-        setToken(token)
+        try {
+            const token = await loginUser({
+                email,
+                password
+            });
+            
+        } catch (error) {
+            console.error(error);
+        }
+        
     };
     
     return(
@@ -27,7 +33,7 @@ export default function Login({ setToken }) {
     <Card.Title >Login</Card.Title> 
     <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3">
-            <Form.Label>Username</Form.Label>
+            <Form.Label>EMail</Form.Label>
             <Form.Control type="text" onChange={e => setUserName(e.target.value)}/>
         </Form.Group>
         

@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { getAllBonds } from '../../services/allBondsService';
 import { Table } from 'react-bootstrap';
+import useToken from '../App/useToken';
 
 export const AllBonds = () => {
 
     const [allBonds, setAllBonds] = useState([])
+    const token = useToken()
 
     useEffect(() => {         
-        getAllBonds()               
+        getAllBonds(token)               
         .then(({data}) => {               
             setAllBonds(data);               
         });       

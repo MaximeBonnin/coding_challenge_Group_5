@@ -4,7 +4,7 @@ import { AllBonds } from '../AllBonds/AllBonds';
 
 
 
-const Dasboard = () => {
+const Dashboard = () => {
   return(
     <>
       <h2>Dashboard</h2>
