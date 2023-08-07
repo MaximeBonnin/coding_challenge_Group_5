@@ -13,9 +13,6 @@ import Test from './components/Test/test';
 
 const App = () => {
   // uncomment when the token authentification is workling
- 
-  
-  
 
   
   return (

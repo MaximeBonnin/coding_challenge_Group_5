@@ -41,7 +41,7 @@ export default function Login() {
             <Form.Label>Password</Form.Label>
             <Form.Control type="password" onChange={e => setPassword(e.target.value)}/>
         </Form.Group>
-        <Button variant="primary " type="submit">Submit</Button>   
+        <Button variant="primary " type="submit">Login</Button>   
     </Form>   
     </Card.Body>     
     </Card>
