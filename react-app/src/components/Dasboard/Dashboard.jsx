@@ -5,7 +5,8 @@ import Filter from './Filter';
 import logoImage from '../../db_logo.png';
 
 const Dashboard = () => {
-  
+  const [date, setDate] = useState(null);
+  const [filterDays, setFilterDays] = useState(false);
 
   return (
     <>
@@ -17,11 +18,11 @@ const Dashboard = () => {
       </ul>
     </header>
     <div className="content-container">
-    <Filter />
+    <Filter setDate={setDate} setFilterDays={setFilterDays} />
     <Card>   
       <Card.Body>
       <Card.Title >Your Bonds</Card.Title> 
-    <AllBonds/>
+      <AllBonds filterDate={date} filterDays={filterDays} />
       </Card.Body>     
     </Card>
 

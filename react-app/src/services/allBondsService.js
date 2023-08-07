@@ -8,10 +8,8 @@ import http from '../config/api';
 export const fetchBonds = (book_id = null, date = null) => {
   const tokenString = localStorage.getItem('token');
   const token = JSON.parse(tokenString);
-  let url = 'http://localhost:8080/api/v1/bonds?'
-  if (book_id != null) {
-    url += (new URLSearchParams({'book_id': book_id})) 
-  }
+  let url = 'http://localhost:8080/api/v1/bonds'
+  
   
   return fetch(url, {
     method: 'GET',
