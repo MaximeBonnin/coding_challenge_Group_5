@@ -21,7 +21,7 @@ const Dashboard = () => {
     <Card>   
       <Card.Body>
       <Card.Title >Your Bonds</Card.Title> 
-      <Card.Text><AllBonds/></Card.Text>  
+    <AllBonds/>
       </Card.Body>     
     </Card>
 

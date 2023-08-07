@@ -16,7 +16,7 @@ export const AllBonds = () => {
     const tabelHead = [
         "ISIN",
         "CUSIP",
-        "Issuer ID",
+        "Issuer Name",
         "Maturity Date",
         "Coupon",
         "Bondtype",
@@ -26,6 +26,19 @@ export const AllBonds = () => {
         "Show Detail"
     ]
 
+    const bondKeys = [
+        "isin",
+        "cusip",
+        "issuerName",
+        "maturityDate",
+        "coupon",
+        "bondType",
+        "faceValue",
+        "currency",
+        "bondStatus",
+        "Show Detail"
+        ]
+
     return (
         <>
 
@@ -34,7 +47,7 @@ export const AllBonds = () => {
                 <tr>
                     {
                     tabelHead.map((item) => {
-                        return <th>{item}</th>
+                        return <th key={item}>{item}</th>
                     })
                     }
                 </tr>

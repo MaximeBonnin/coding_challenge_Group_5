@@ -6,12 +6,15 @@ import { saveLogin as loginUser } from '../../services/loginService'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Card from "react-bootstrap/Card";
+import { redirect, Route, useNavigate } from "react-router-dom";
 
   
 export default function Login() {
     const [email, setUserName] = useState();
     const [password, setPassword] = useState();
-
+    const navigate = useNavigate()
+   
+    const [errorMessage, setErrorMessage] = useState("");
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
@@ -19,12 +22,26 @@ export default function Login() {
                 email,
                 password
             });
-        localStorage.setItem('token', JSON.stringify(token));
+            if (token) {
+                localStorage.setItem('token', JSON.stringify(token));
+                navigateToDashboard();
+            } else {
+                setErrorMessage("Incorrect email or password");
+            }
+            
+        
         } catch (error) {
             console.error(error);
+            setErrorMessage("Incorrect email or password");
         }
         
     };
+    const navigateToDashboard = () => {
+        
+        if (errorMessage === "") {
+            navigate('/dashboard');
+        }
+    }
     
     return(
     <div className="login-wrapper">
@@ -41,8 +58,10 @@ export default function Login() {
             <Form.Label>Password</Form.Label>
             <Form.Control type="password" onChange={e => setPassword(e.target.value)}/>
         </Form.Group>
+        {errorMessage && <p className="error-message" style={{ color: 'red' }}>{errorMessage}</p>}
         <Button variant="primary " type="submit">Login</Button>   
     </Form>   
+    
     </Card.Body>     
     </Card>
     </div>  
