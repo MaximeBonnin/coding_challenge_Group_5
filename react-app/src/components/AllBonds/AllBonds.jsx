@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { getAllBonds } from '../../services/allBondsService';
 import { Table } from 'react-bootstrap';
 import { fetchBonds } from '../../services/allBondsService';
+import BondRow from './BondRow';
+
 
 export const AllBonds = ({ filterDate, filterDays }) => {
     const [bonds, setBonds] = useState(null);
@@ -26,16 +28,19 @@ export const AllBonds = ({ filterDate, filterDays }) => {
           });
       }, [filterDate, filterDays]);
    // console.log(bonds)
+
+
     const tabelHead = [
         "ISIN",
-        "cusip",
+        "CUSIP",
         "Issuer Name",
         "Maturity Date",
         "Coupon",
         "Bondtype",
         "Face value",
         "Currency",
-        "Bond Status"
+        "Bond Status",
+        "Show Detail"
     ]
 
     const bondKeys = [
@@ -47,7 +52,8 @@ export const AllBonds = ({ filterDate, filterDays }) => {
         "bondType",
         "faceValue",
         "currency",
-        "bondStatus"
+        "bondStatus",
+        "Show Detail"
         ]
 
     return (
@@ -66,27 +72,7 @@ export const AllBonds = ({ filterDate, filterDays }) => {
             <tbody>
                 {bonds && bonds.map((item, index) => {
                     return (
-                    <tr key={index}>
-                        {
-                        bondKeys.map((keyValue) => {
-                            if (keyValue == "maturityDate") {
-                                let tempDate = new Date(item[keyValue])
-                                let yyyy = tempDate.getFullYear();
-                                let mm = tempDate.getMonth() + 1;
-                                let dd = tempDate.getDate();
-                                
-                                if (dd < 10) dd = '0' + dd;
-                                if (mm < 10) mm = '0' + mm;
-
-                                tempDate = dd + '/' + mm + '/' + yyyy;
-                                
-                                return (<td>{tempDate}</td>)
-                            } else {
-                                return (<td>{item[keyValue]}</td>)
-                            }
-                        })
-                        }
-                    </tr>
+                        <BondRow index={index} item={item} />
                     )
                 }
                 )
