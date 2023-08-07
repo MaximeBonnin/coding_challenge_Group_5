@@ -11,7 +11,7 @@ const Dasboard = () => {
     <header>
       <ul>
         <li><img id='logo-image' src={logoImage}  alt="Logo Image"/></li>
-        <li>Your Email: <b> test@email.com</b></li>
+        <li>Logged in as: <b> test@email.com</b></li>
       </ul>
     </header>
     <div className="content-container">
