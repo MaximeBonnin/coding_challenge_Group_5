@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { AllBonds } from '../AllBonds/AllBonds';
 import Card from "react-bootstrap/Card";
 import Filter from './Filter';
 import logoImage from '../../db_logo.png';
 
+const Dashboard = () => {
+  
 
-
-
-const Dasboard = () => {
-  return(
+  return (
     <>
+
     <header>
       <ul>
         <li><img id='logo-image' src={logoImage}  alt="Logo Image"/></li>
@@ -29,8 +29,9 @@ const Dasboard = () => {
       
       
     </div>
+
     </>
   );
-}
+};
 
 export default Dashboard;

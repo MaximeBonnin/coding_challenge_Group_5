@@ -1,16 +1,26 @@
 import { hostNameUrl } from '../config/api';
+import { useState } from 'react';
 
-export function saveLogin(loginData) {
-    // add the url of the endpoint
-    // return http.post('', loginData)
-    return fetch(
-        // add here the endpoint URL
-        `${hostNameUrl}/...`, {
-            method: 'POST', 
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(loginData)
-        }
-    ).then(data => data.json())
+
+export const saveLogin = async (loginData) => {
+    const url = `${hostNameUrl}/auth/login`;     
+    const payload = loginData; 
+    try {       
+        const response = await fetch(url, {         
+            method: 'POST',         
+            headers: {           
+                'Content-Type': 'application/json',        
+            },         
+            body: JSON.stringify(payload),       
+        });  
+        const data = await response.text(); 
+    
+
+        
+        return data;
+    } catch (error) {       
+        console.error('An error occurred:', error);       
+        // Handle the error as needed     
+    } 
 }
+

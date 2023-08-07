@@ -1,19 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import { getAllBonds } from '../../services/allBondsService';
 import { Table } from 'react-bootstrap';
+import { fetchBonds } from '../../services/allBondsService';
 
 export const AllBonds = () => {
+    const [bonds, setBonds] = useState(null);
 
-    const [allBonds, setAllBonds] = useState([])
-
-    useEffect(() => {         
-        getAllBonds()               
-        .then(({data}) => {               
-            setAllBonds(data);               
-        });       
-        }, []);
-    const getAllBondsFromAPI = ()=>{}
-    
+    useEffect(() => {
+      fetchBonds()
+        .then((data) => setBonds(data));
+    }, []);
+    console.log(bonds)
     const tabelHead = [
         "ISIN",
         "cusip",
@@ -52,7 +49,7 @@ export const AllBonds = () => {
                 </tr>
             </thead>
             <tbody>
-                {allBonds.map((item, index) => {
+                {bonds && bonds.map((item, index) => {
                     return (
                     <tr key={index}>
                         {

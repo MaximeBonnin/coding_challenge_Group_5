@@ -13,7 +13,7 @@ public class BondHandler implements BondService{
     BondRepository bondRepository;
     @Override
     public List<Bond> getAllBonds() {
-        List<Bond> bonds = bondRepository.getAllBonds();
+        List<Bond> bonds = bondRepository.findAll();
         System.out.println(bonds);
         return bonds;
     }
