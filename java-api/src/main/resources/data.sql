@@ -55,7 +55,7 @@ FROM ALL_DATA;
 
 
 -- Insert data into the trades table
-INSERT INTO trades (book_id, isin, issuer_id, currency, trade_status, quantity, unit_price, order_type, trade_date, settle_date)
+INSERT INTO trades (book_id, isin, issuer_id, currency, trade_status, quantity, unit_price, trade_type, trade_date, settle_date)
 SELECT
     (SELECT id  FROM book WHERE book.name= ALL_DATA.book_name ) as id_book, 
     isin, 
@@ -64,7 +64,7 @@ SELECT
     trade_status, 
     quantity, 
     unit_price, 
-    type, 
+    trade_type, 
     PARSEDATETIME(trade_date, 'dd/MM/yyyy'), 
     PARSEDATETIME(trade_settlement_date, 'dd/MM/yyyy')
 FROM ALL_DATA;

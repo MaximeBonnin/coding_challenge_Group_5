@@ -54,7 +54,7 @@ CREATE TABLE trades (
     trade_status VARCHAR(250) NOT NULL,
     quantity INT NOT NULL,
     unit_price DECIMAL(65, 2) NOT NULL,
-    order_type VARCHAR(250) NOT NULL,
+    trade_type VARCHAR(250) NOT NULL,
     trade_date DATE NOT NULL,
     settle_date DATE NOT NULL,
     FOREIGN key (book_id) REFERENCES book (id),

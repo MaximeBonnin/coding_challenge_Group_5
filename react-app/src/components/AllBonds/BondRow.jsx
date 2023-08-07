@@ -17,38 +17,49 @@ const BondRow = (props) => {
         ]
 
     const tradesHead = [
-        "ISIN",
-        "Issuer ID",
-        "Currency",
-        "Status",
-        "Quantity",
+        "Trade Type",
         "Price",
-        "Order Type",
+        "Quantity",
+        "Status",
+        "Currency",
         "Trade Date",
         "Settle Date"
     ]
 
-    const [showDetail, setShowDetail] = useState(false);
-    const [trades, setTrades] = useState(null);
-
-    const handleSwitch = () => {
+    const tradesCols = [
+        "tradeType",
+        "unitPrice",
+        "quantity",
+        "tradeStatus",
+        "currency",
+        "tradeDate",
+        "settleDate"
+    ]
         
+
+    const [showDetail, setShowDetail] = useState(false);
+    const [trades, setTrades] = useState();
+
+    const handleSwitch = async () => {
         if (showDetail) {
             setShowDetail(false)
         } else {
-            setShowDetail(true)
-            fetchTrades(3, "USU02320AG12")
-                .then((data) => setTrades(data))
+            const data = await fetchTrades(3, props.item.isin);
+            setTrades(data);
+            setShowDetail(true);
         }
-        console.log("showDetail: " + showDetail)
-        console.log(trades)
     }
+    
 
-    const getTrades = (bookId, isin) => {
-        fetchTrades(bookId, isin)
-          .then((data) => setTrades(data));
-          console.log(trades)
-      };
+    useEffect(() => {
+        const fetchTradesData = async () => {
+            const data = await fetchTrades(3, props.item.isin);
+            setTrades(data);
+        };
+        fetchTradesData();
+    }, []);
+    
+
       
     return (
         <>
@@ -75,29 +86,43 @@ const BondRow = (props) => {
                 <td><Form.Check type='switch' id={props.index + "-switch"} onChange={handleSwitch} /></td>
             </tr>
             
-            {showDetail && 
+            {showDetail && trades.length > 0 &&
                 <tr>
                 <td colSpan={bondKeys.length +1} >
                     <Table striped bordered hover variant="dark">
                         <thead>
                             {
-                            tradesHead.map((item) => {
-                                return <th>{item}</th>
+                            tradesHead.map((headerName) => {
+                                return <th>{headerName}</th>
                             })
                             }
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>
-                                    test
-                                </td>
-                                <td>
-                                    test
-                                </td>
-                            </tr>
-                            
-                        </tbody>
+                            {trades && trades.map(trade => 
+                                <tr>
+                                    {
+                                        tradesCols.map(key => {
+                                            if (key === "settleDate" | key === "tradeDate") {
+                                                let tempDate = new Date(trade[key])
+                                                let yyyy = tempDate.getFullYear();
+                                                let mm = tempDate.getMonth() + 1;
+                                                let dd = tempDate.getDate();
+                                                
+                                                if (dd < 10) dd = '0' + dd;
+                                                if (mm < 10) mm = '0' + mm;
                         
+                                                tempDate = dd + '/' + mm + '/' + yyyy;
+                                                
+                                                return (<td>{tempDate}</td>)
+                                            } else {
+                                                return (<td>{trade[key]}</td>)
+                                            }
+                                            
+                                        })
+                                    }
+                                </tr>
+                            )}
+                        </tbody>
                     </Table>
                 </td>
             </tr>

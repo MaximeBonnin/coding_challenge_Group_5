@@ -23,12 +23,12 @@ public class Trade {
 
     private int quantity;
     private double unitPrice;
-    private String orderType;
+    private String tradeType;
     private Date tradeDate;
     private Date settleDate;
     public Trade(){ }
     public Trade(Long id, int book_id, String isin, int issuerId, String currency,
-                 String tradeStatus, int quantity, double unitPrice, String orderType,
+                 String tradeStatus, int quantity, double unitPrice, String tradeType,
                  Date tradeDate, Date settleDate) {
         this.id = id;
         this.book_id = book_id;
@@ -38,7 +38,7 @@ public class Trade {
         this.tradeStatus = tradeStatus;
         this.quantity = quantity;
         this.unitPrice = unitPrice;
-        this.orderType = orderType;
+        this.tradeType = tradeType;
         this.tradeDate = tradeDate;
         this.settleDate = settleDate;
     }
@@ -107,13 +107,13 @@ public class Trade {
     public void setUnitPrice(double unitPrice) {
         this.unitPrice = unitPrice;
     }
-    @Column(name="order_type", nullable = false)
-    public String getOrderType() {
-        return orderType;
+    @Column(name="trade_type", nullable = false)
+    public String getTradeType() {
+        return tradeType;
     }
 
-    public void setOrderType(String orderType) {
-        this.orderType = orderType;
+    public void setTradeType(String tradeType) {
+        this.tradeType = tradeType;
     }
     @Column(name="trade_date", nullable = false)
     public Date getTradeDate() {
@@ -143,7 +143,7 @@ public class Trade {
                 ", tradeStatus='" + tradeStatus + '\'' +
                 ", quantity=" + quantity +
                 ", unitPrice=" + unitPrice +
-                ", orderType='" + orderType + '\'' +
+                ", tradeType='" + tradeType + '\'' +
                 ", tradeDate=" + tradeDate +
                 ", settleDate=" + settleDate +
                 '}';
