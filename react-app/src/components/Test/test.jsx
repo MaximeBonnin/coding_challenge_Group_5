@@ -27,7 +27,7 @@ const Test = () => {
  
       if (response.ok) {
         setResponse(token);
-        console.log(token);
+      
         // Handle success logic
       } else {
         // Handle error logic
@@ -39,7 +39,6 @@ const Test = () => {
   };
  
  
-  console.log(user);
  
   return (
     <>

@@ -1,38 +1,21 @@
-import useToken from '../components/App/useToken';
+
 import { hostNameUrl } from '../config/api';
 import axios from "axios";
 import http from '../config/api';
 
 // axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
 
-export const getAllBonds = async (token) => {
+export const fetchBonds = () => {
+  const tokenString = localStorage.getItem('token');
+  const token = JSON.parse(tokenString);
 
-    // const bonds = axios.get(`${hostNameUrl}/bonds`);
-    // const bonds = await fetch(`${hostNameUrl}/bonds`, {
-    //     method: 'GET',
-    //     mode: 'cors',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //       "Access-Control-Allow-Methods": "POST, GET",
-    //       'Access-Control-Allow-Origin': '*',
-    //       Authorization: `Bearer ${token}`
-    //     }
-    //   });
-
-    token = token['token']['token'];
-    const config = {
-      headers: { 
-        'Authorization': `${token}`, 
-        'Access-Control-Allow-Origin': '*',
-        'withCredentials': false
-      } ,
-      params: {
-        access_token: token
-      }
-    };
-    console.log(config)
-
-    const bonds = axios.get(`${hostNameUrl}/bonds`, config)
- 
-    return bonds;
+  return fetch('http://localhost:8080/api/v1/bonds', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    },
+  })
+    .then((response) => response.json())
+    .catch((error) => console.error(error));
 };

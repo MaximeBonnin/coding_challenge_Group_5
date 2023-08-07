@@ -19,7 +19,7 @@ export default function Login() {
                 email,
                 password
             });
-            
+        localStorage.setItem('token', JSON.stringify(token));
         } catch (error) {
             console.error(error);
         }
@@ -47,8 +47,4 @@ export default function Login() {
     </Card>
     </div>  
     )
-};
-
-Login.propTypes = {
-    setToken: PropTypes.func.isRequired
 };

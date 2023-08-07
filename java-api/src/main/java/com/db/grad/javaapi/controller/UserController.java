@@ -53,11 +53,6 @@ public class UserController {
         return ResponseEntity.ok().body(token);
     }
 
-    @PostMapping("/token")
-    public String token(Authentication authentication) {
-
-        return null;
-    }
 
 
 
