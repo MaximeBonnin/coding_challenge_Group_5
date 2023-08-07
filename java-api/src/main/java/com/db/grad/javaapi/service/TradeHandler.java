@@ -25,8 +25,8 @@ public class TradeHandler implements TradeService{
     }
 
     @Override    
-    public List<Trade> getTradesByBookIdAndIsin(long bookId, String isin)
+    public List<Trade> getTradesByBookIdAndIsin( String isin)
     {
-        return tradeRepository.findByBookIdAndIsin(bookId, isin);
+        return tradeRepository.findByBookIdAndIsin( isin);
     }
 }

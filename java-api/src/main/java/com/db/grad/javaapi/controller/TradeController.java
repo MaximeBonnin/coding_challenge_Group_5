@@ -27,19 +27,18 @@ public class TradeController {
     }
 
 
-    @GetMapping("/trades/{book_id}")
-    public List<Trade> getTradesByBookId(@PathVariable(value = "book_id") Long bookId)
-    throws ResourceNotFoundException {
-        return tradeService.getTradesByBookId(bookId);
-    }
+//    @GetMapping("/trades/{book_id}")
+//    public List<Trade> getTradesByBookId(@PathVariable(value = "book_id") Long bookId)
+//    throws ResourceNotFoundException {
+//        return tradeService.getTradesByBookId(bookId);
+//    }
 
     
-    @GetMapping("/trades/{book_id}/{isin}")
+    @GetMapping("/trades/{isin}")
     public List<Trade> getTradesByBookId(
-        @PathVariable(value = "book_id") Long bookId,
         @PathVariable(value = "isin") String isin)
     throws ResourceNotFoundException {
-        return tradeService.getTradesByBookIdAndIsin(bookId, isin);
+        return tradeService.getTradesByBookIdAndIsin( isin);
     }
 
 }
