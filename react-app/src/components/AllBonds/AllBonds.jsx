@@ -5,28 +5,15 @@ import { fetchBonds } from '../../services/allBondsService';
 import BondRow from './BondRow';
 
 
-export const AllBonds = ({ filterDate, filterDays }) => {
+export const AllBonds = ({ filterDate, filterBooks }) => {
     const [bonds, setBonds] = useState(null);
 
+
     useEffect(() => {
-        fetchBonds()
-          .then((data) => {
-            if (filterDate) {
-              // Instead of directly creating a new Date from filterDate, we'll extract the year, month, and day
-              let [year, month, day] = filterDate.split('-').map(str => parseInt(str, 10));
-    
-              data = data.filter(bond => {
-                let bondDate = new Date(bond.maturityDate);
-                
-                // Now, directly compare the year, month, and day
-                return bondDate.getFullYear() === year && 
-                       bondDate.getMonth() + 1 === month && 
-                       bondDate.getDate() === day;
-              });
-            }
-            setBonds(data);
-          });
-      }, [filterDate, filterDays]);
+        fetchBonds(filterDate, filterBooks)
+          .then((data) => setBonds(data));
+          },
+       [filterDate, filterBooks]);
    // console.log(bonds)
 
 
@@ -55,10 +42,11 @@ export const AllBonds = ({ filterDate, filterDays }) => {
         "bondStatus",
         "Show Detail"
         ]
-
+    
+    
+    try {
     return (
         <>
-
         <Table striped bordered hover variant="dark">
             <thead>
                 <tr>
@@ -81,4 +69,19 @@ export const AllBonds = ({ filterDate, filterDays }) => {
         </Table>
         </>
     )
+    } catch (error) {
+        return (
+            <Table striped bordered hover variant="dark">
+            <thead>
+                <tr>
+                    {
+                    tabelHead.map((item) => {
+                        return <th key={item}>{item}</th>
+                    })
+                    }
+                </tr>
+            </thead>
+        </Table>
+        )
+    }
 }
