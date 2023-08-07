@@ -7,7 +7,7 @@ const BondRow = (props) => {
     const bondKeys = [
         "isin",
         "cusip",
-        "issuer_name",
+        "issuerName",
         "maturityDate",
         "coupon",
         "bondType",
