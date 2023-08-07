@@ -44,7 +44,7 @@ const BondRow = (props) => {
         if (showDetail) {
             setShowDetail(false)
         } else {
-            const data = await fetchTrades(3, props.item.isin);
+            const data = await fetchTrades(props.book_id, props.item.isin);
             setTrades(data);
             setShowDetail(true);
         }
@@ -53,7 +53,7 @@ const BondRow = (props) => {
 
     useEffect(() => {
         const fetchTradesData = async () => {
-            const data = await fetchTrades(3, props.item.isin);
+            const data = await fetchTrades(props.book_id, props.item.isin);
             setTrades(data);
         };
         fetchTradesData();

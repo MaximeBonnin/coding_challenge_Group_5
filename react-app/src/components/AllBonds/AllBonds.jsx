@@ -60,7 +60,7 @@ export const AllBonds = ({ filterDate, filterBooks }) => {
             <tbody>
                 {bonds && bonds.map((item, index) => {
                     return (
-                        <BondRow index={index} item={item} />
+                        <BondRow index={index} item={item} book_id={filterBooks} />
                     )
                 }
                 )
