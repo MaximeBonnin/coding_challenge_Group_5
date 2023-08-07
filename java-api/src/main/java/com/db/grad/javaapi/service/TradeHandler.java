@@ -23,4 +23,10 @@ public class TradeHandler implements TradeService{
     {
         return tradeRepository.findByBookId(bookId);
     }
+
+    @Override    
+    public List<Trade> getTradesByBookIdAndIsin(long bookId, String isin)
+    {
+        return tradeRepository.findByBookIdAndIsin(bookId, isin);
+    }
 }

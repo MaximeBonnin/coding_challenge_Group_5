@@ -9,4 +9,6 @@ public interface TradeService {
 
     public List<Trade> getTradesByBookId(long bookId);
 
+    public List<Trade> getTradesByBookIdAndIsin(long bookId, String isin);
+
 }

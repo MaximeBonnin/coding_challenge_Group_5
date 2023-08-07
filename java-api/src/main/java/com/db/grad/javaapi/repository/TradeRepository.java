@@ -12,4 +12,7 @@ import org.springframework.stereotype.Repository;
 public interface TradeRepository extends JpaRepository<Trade, Integer> {
     @Query(nativeQuery = true, value = "SELECT * FROM trades WHERE book_id = :bookId")
     List<Trade> findByBookId(long bookId);
+
+    @Query(nativeQuery = true, value = "SELECT * FROM trades WHERE book_id = :bookId AND isin = :isin")
+    List<Trade> findByBookIdAndIsin(long bookId, String isin);
 }

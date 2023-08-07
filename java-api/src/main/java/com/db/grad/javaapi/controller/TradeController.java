@@ -33,4 +33,13 @@ public class TradeController {
         return tradeService.getTradesByBookId(bookId);
     }
 
+    
+    @GetMapping("/trades/{book_id}/{isin}")
+    public List<Trade> getTradesByBookId(
+        @PathVariable(value = "book_id") Long bookId,
+        @PathVariable(value = "isin") String isin)
+    throws ResourceNotFoundException {
+        return tradeService.getTradesByBookIdAndIsin(bookId, isin);
+    }
+
 }
