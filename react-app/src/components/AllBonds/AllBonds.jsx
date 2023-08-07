@@ -40,9 +40,8 @@ export const AllBonds = () => {
 
     return (
         <>
-        <h2>All Bonds</h2>
 
-        <Table striped bordered hover>
+        <Table striped bordered hover variant="dark">
             <thead>
                 <tr>
                     {

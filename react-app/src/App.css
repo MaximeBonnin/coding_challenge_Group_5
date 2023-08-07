@@ -1,5 +1,48 @@
-.App {
-  text-align: center;
+body {
+  background-color: rgb(20, 22, 37);
+}
+
+header {
+  background-color: #0018A8;
+  color: white;
+  border-bottom: 2px solid white;
+  padding: 1em;
+}
+
+header > ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+.form-control {
+  background-color: rgb(68, 85, 105);
+  border-color: #282c34;
+  color: white
+}
+
+.btn {
+  background-color: rgb(20, 22, 37);
+  color:white;
+  border-color: rgb(68, 85, 105);
+}
+
+#logo-image {
+  width: 100px;
+}
+
+.card {
+  color: white;
+  margin: 1em;
+  background-color: rgb(46, 57, 71);
 }
 
 .App-logo {
