@@ -23,6 +23,19 @@ ul {
   margin: 0;
 }
 
+.trade-container {
+  text-align: center;
+  margin: auto;
+}
+
+.trade-table {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+}
+
 .form-control {
   background-color: rgb(68, 85, 105);
   border-color: #282c34;

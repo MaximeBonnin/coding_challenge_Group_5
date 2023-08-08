@@ -88,8 +88,8 @@ const BondRow = (props) => {
             
             {showDetail && trades.length > 0 &&
                 <tr>
-                <td colSpan={bondKeys.length +1} >
-                    <Table striped bordered hover variant="dark">
+                <td colSpan={bondKeys.length +1} className='trade-container' >
+                    <Table className='trade-table' striped bordered hover variant="dark">
                         <thead>
                             {
                             tradesHead.map((headerName) => {
