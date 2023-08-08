@@ -78,6 +78,8 @@ const BondRow = (props) => {
                         tempDate = dd + '/' + mm + '/' + yyyy;
                         
                         return (<td>{tempDate}</td>)
+                    } else if (keyValue === "coupon") {
+                        return (<td>{props.item[keyValue]} %</td>)
                     } else {
                         return (<td>{props.item[keyValue]}</td>)
                     }
